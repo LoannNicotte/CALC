@@ -15,7 +15,7 @@ public class Example5ConnectionAcceptor {
    public static void main(String[] args) {
       if (args.length != 2)
          System.out.println
-            ("This program requires three command line arguments");
+            ("This program requires 2 command line arguments");
       else {
          try {
   		      int portNo = Integer.parseInt(args[0]);
