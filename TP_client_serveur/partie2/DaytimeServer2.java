@@ -22,6 +22,7 @@ public class DaytimeServer2 {
          while (true) {  // forever loop
             // wait to accept a connection 
 /**/        System.out.println("Waiting for a connection.");
+            Thread.sleep (3000);
             MyStreamSocket myDataSocket = new MyStreamSocket
                 (myConnectionSocket.accept( ));
             // Note: there is no need to read a request - the 

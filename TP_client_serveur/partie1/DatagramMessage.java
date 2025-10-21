@@ -8,6 +8,7 @@ public class DatagramMessage{
    private String message;
    private InetAddress senderAddress;
    private int senderPort;
+   
    public void putVal(String message, InetAddress addr, int port) {
       this.message = message;
       this.senderAddress = addr;

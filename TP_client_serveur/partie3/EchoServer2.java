@@ -31,16 +31,31 @@ public class EchoServer2 {
             while (!done) {
                message = myDataSocket.receiveMessage( );
 /**/           System.out.println("message received: "+ message);
+
                if ((message.trim()).equals (endMessage)){
                   //Session over; close the data socket.
 /**/              System.out.println("Session over.");
                   myDataSocket.close( );
                   done = true;
-               } //end if
-               else {
-                  // Now send the echo to the requestor
-                  myDataSocket.sendMessage(message);
-               } //end else
+                  continue;
+               } 
+
+               String[] parse = message.split(" ");
+
+               if(parse.length != 3){
+                  myDataSocket.sendMessage("Invalid input: Please provide an operator and two operands.");
+               }
+               else{
+                  String validationResult = Calculatrice.valide_input(parse[0], parse[1], parse[2]);
+                  System.out.println("Validation result: " + validationResult);
+                  if(validationResult != ""){
+                     myDataSocket.sendMessage(validationResult);
+                  }else{
+                     int result = Calculatrice.calculate(parse[0], parse[1], parse[2]);
+                     myDataSocket.sendMessage(message + " = " + result);
+                  }
+               }
+
 		       } //end while !done
          } //end while forever
        } // end try
