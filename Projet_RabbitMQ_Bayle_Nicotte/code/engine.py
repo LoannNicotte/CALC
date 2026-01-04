@@ -21,7 +21,7 @@ def initialize_world():
 
     for x in [100, 200, 300, 400, 500, 600]:
         for y in [50, 150, 250]:
-            if rnd.random() < 0.1:
+            if rnd.random() < 0.5:
                 alien_type = rnd.choice(["green", "red", "yellow"])
                 health = {"green": 1, "red": 3, "yellow": 2}[alien_type]
                 world_state["aliens"].append({"type": alien_type, "x": x, "y": y, "health": health})
